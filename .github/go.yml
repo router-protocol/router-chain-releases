@@ -1,0 +1,41 @@
+# This workflow will build a golang project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-go
+
+name: Go
+
+on:
+  push:
+    branches: [ "exeworkflow" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - name: Build
+      run: | 
+          git config --global url."https://anubhavrouter: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@github.com/".insteadOf "https://github.com/"
+          echo "hello anubhav"
+          echo "listing the files"
+          ls -ltr
+          echo "list is done"
+          make build
+          echo "build is done "
+    - name: release
+      uses: actions/create-release@v1
+      id: create_release
+      with:
+        draft: false
+        prerelease: false
+        release_name: "router-relayer"
+        tag_name: "latest1"
+        body_path: CHANGELOG.md
+      env:
+        GITHUB_TOKEN: "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"
