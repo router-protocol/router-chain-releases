@@ -37,3 +37,5 @@ jobs:
           prerelease: false
           release_name: "router-relayer"
           tag_name: "latest"
+    env:
+        GITHUB_TOKEN: "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"
