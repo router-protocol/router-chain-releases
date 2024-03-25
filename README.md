@@ -1,2 +1,2 @@
 # router-chain-releases
-Release Binary for Routerchain
+Release Binary for testnet Routerchain
